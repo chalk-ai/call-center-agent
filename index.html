@@ -187,7 +187,8 @@ function renderState(s) {
   const add = (k, val) => kv.append(el("span", null, k), el("span", null, val));
   add("Customer", `${a.name} · ${s.account_id}`);
   add("Plan", `${a.plan.name} · $${a.plan.monthly}/mo`);
-  add("Balance", `$${a.balance_due.toFixed(2)}${s.credited ? `  (credited $${s.credited.toFixed(2)})` : ""}`);
+  const bal = a.balance_due < 0 ? `-$${(-a.balance_due).toFixed(2)} (credit)` : `$${a.balance_due.toFixed(2)}`;
+  add("Balance", `${bal}${s.credited ? ` · credited $${s.credited.toFixed(2)} this call` : ""}`);
   add("Card", `${a.card_on_file}${a.autopay ? " · autopay" : ""}`);
   a.lines.forEach((l) => add("Line", `${l.number.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3")} · ${l.device} · ${l.status}`));
   d.append(kv);
