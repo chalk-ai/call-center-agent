@@ -43,8 +43,8 @@ enabled (`chalk router status`). The environment also needs a router API key sto
 secret `CHALK_ROUTER_API_KEY` (`chalk router api-key create`).
 
 ```bash
-./deploy.py                                   # CPU only: the models run behind the gateway
-./deploy.py --live-model anthropic/claude-sonnet-5-5
+./deploy.py # CPU only: the models run behind the gateway
+./deploy.py
 ```
 
 Open the printed `web_url`. **Call** uses your microphone through the browser's speech
@@ -73,5 +73,5 @@ fictional.
 
 The SDK reads credentials, API host, and the selected environment from your existing
 `chalk login` in `~/.chalk.yml`, including project-scoped and default logins.
-For unattended runs, `CHALK_CLIENT_ID` and `CHALK_CLIENT_SECRET` remain supported. Where available, `--env-id`
-overrides the target environment; otherwise the SDK uses your login or environment settings.
+For unattended runs, `CHALK_CLIENT_ID` and `CHALK_CLIENT_SECRET` remain supported.
+The examples use the current environment selected by your Chalk login.
