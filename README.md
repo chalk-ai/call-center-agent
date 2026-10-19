@@ -43,8 +43,8 @@ enabled (`chalk router status`). The environment also needs a router API key sto
 secret `CHALK_ROUTER_API_KEY` (`chalk router api-key create`).
 
 ```bash
-./deploy.py                                   # CPU only: the models run behind the gateway
-./deploy.py --live-model anthropic/claude-sonnet-5-5
+./deploy.py # CPU only: the models run behind the gateway
+./deploy.py
 ```
 
 Open the printed `web_url`. **Call** uses your microphone through the browser's speech
@@ -68,3 +68,10 @@ Calls live in the replica's memory, which is why the scaling group runs one repl
 
 Apache-2.0. Halyard Mobile, its customers and their phone numbers (in the 555-01xx range) are
 fictional.
+
+## Local authentication
+
+The SDK reads credentials, API host, and the selected environment from your existing
+`chalk login` in `~/.chalk.yml`, including project-scoped and default logins.
+For unattended runs, `CHALK_CLIENT_ID` and `CHALK_CLIENT_SECRET` remain supported.
+The examples use the current environment selected by your Chalk login.
