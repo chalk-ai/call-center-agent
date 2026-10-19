@@ -68,3 +68,10 @@ Calls live in the replica's memory, which is why the scaling group runs one repl
 
 Apache-2.0. Halyard Mobile, its customers and their phone numbers (in the 555-01xx range) are
 fictional.
+
+## Local authentication
+
+The SDK reads credentials, API host, and the selected environment from your existing
+`chalk login` in `~/.chalk.yml`, including project-scoped and default logins.
+For unattended runs, `CHALK_CLIENT_ID` and `CHALK_CLIENT_SECRET` remain supported. Where available, `--env-id`
+overrides the target environment; otherwise the SDK uses your login or environment settings.
