@@ -91,6 +91,14 @@ cfg = model_config()
 app = FastAPI()
 
 
+# This host exists only to back a chalk.ai/demos page; keep it out of search results.
+@app.middleware("http")
+async def add_noindex_header(request, call_next):
+    response = await call_next(request)
+    response.headers["X-Robots-Tag"] = "noindex, nofollow"
+    return response
+
+
 def client_ip(request: Request) -> str:
     forwarded = request.headers.get("x-forwarded-for", "")
     return forwarded.split(",")[0].strip() or (request.client.host if request.client else "unknown")
